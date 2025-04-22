@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="WeatherNew.css" />
+  </head>
+  <body>
+    <div class="weather-container">
+      <h2>Weather App</h2>
+      <input type="text" id="cityInput" placeholder="Enter city name" />
+      <button onclick="getWeather()">Get Weather</button>
+      <div id="weatherResult"></div>
+    </div>
+    <!-- Show Summary Button -->
+     <div class="summary-container">
+        <button id="showSummaryBtn" style="display:flex; border-top: 1px;" onclick="showSummary()">Show Summary</button>
+
+        <!-- Summary display -->
+        <div id="summaryBox" style="display: flex; background-color: #f9f9fc; padding: 1px; border-top: 5px; border-radius: 8px;">
+        <h4>Weather Summary:</h4>
+        <p id="summaryText"></p>
+        </div>
+     </div>
+    
+    <script src="WeatherNew.js"></script>
+  </body>
+</html>
