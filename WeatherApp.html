@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="WeatherApp.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <button id="unitToggleBtn" onclick="toggleUnits()">°C/°F</button>
+    <button id="historyToggleBtn" onclick="toggleHistory()">📂 History</button>
+    <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+  </div>
+
+  <!-- APP BODY -->
+  <div class="app-container">
+    <!-- Weather Search -->
+    <div class="weather-card">
+      <h2 class="title">🌤️ Weather App</h2>
+      <input type="text" id="cityInput" placeholder="Enter city name" />
+      <button onclick="getWeather()">Get Weather</button>
+    </div>
+
+    <!-- Search History -->
+    <div id="historyContainer" class="history-container" style="display: none;"></div>
+
+    <!-- Weather Result + Summary -->
+    <div class="result-summary" style="display: none;">
+      <div id="weatherResult" class="weather-info"></div>
+      <div class="summary-box">
+        <button id="showSummaryBtn" onclick="showSummary()">Show Summary</button>
+        <div id="summaryBox">
+          <h4>Weather Summary:</h4>
+          <p id="summaryText"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5-Day Forecast -->
+    <div id="forecastContainer" class="forecast-grid" style="display: none;"></div>
+  </div>
+
+  <script src="WeatherApp.js"></script>
+</body>
+</html>

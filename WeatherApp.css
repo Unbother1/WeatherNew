@@ -1,0 +1,225 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #83a4d4, #b6fbff);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Top-right bar */
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.top-bar button {
+  padding: 8px 12px;
+  background-color: #edf2f7;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+body.dark-mode .top-bar {
+  background-color: #2d3748;
+}
+
+body.dark-mode .top-bar button {
+  background-color: #4a5568;
+  color: #f7fafc;
+}
+
+/* App container padding to prevent overlap */
+.app-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 90px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Weather input card */
+.weather-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.weather-card input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.weather-card button {
+  margin-top: 12px;
+  padding: 12px 20px;
+  background-color: #4c9aff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.weather-card button:hover {
+  background-color: #357ae8;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* History Buttons */
+.history-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.history-btn {
+  background-color: #e2e8f0;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.history-btn:hover {
+  background-color: #cbd5e1;
+}
+
+/* Weather result + summary */
+.result-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.weather-card-output {
+  background-color: #eed14e;
+  border-radius: 12px;
+  padding: 16px;
+  flex: 1 1 250px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.weather-card-output img.animated-icon {
+  width: 80px;
+  margin-top: 10px;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.weather-card-output .datetime {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.summary-box {
+  flex: 1 1 250px;
+  background: linear-gradient(to right, #007cf0, #00dfd8);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-box h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.summary-box p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Forecast styling */
+.forecast-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.forecast-card {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.forecast-card:hover {
+  transform: scale(1.05);
+}
+
+.dark-mode .forecast-card {
+  background-color: #2d3748;
+  color: #f7fafc;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1a202c;
+  color: #f7fafc;
+}
+
+body.dark-mode .weather-card,
+body.dark-mode .weather-card-output,
+body.dark-mode .summary-box {
+  background-color: #2d3748;
+  color: #f7fafc;
+}
+
+body.dark-mode input,
+body.dark-mode button {
+  background-color: #4a5568;
+  color: #f7fafc;
+  border-color: #718096;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .result-summary {
+    flex-direction: column;
+  }
+}
