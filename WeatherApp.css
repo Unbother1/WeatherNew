@@ -1,4 +1,4 @@
-/* General Reset */
+/* General*/
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +7,24 @@
 
 body {
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(to right, #83a4d4, #b6fbff);
-  min-height: 100vh;
+  background: url('https://miro.medium.com/v2/resize:fit:5120/1*GsImz-edoeuqCMfKxDus0w.jpeg') no-repeat center center fixed;
+  background-size: cover;
   color: #333;
+}
+
+/* Dark Mode Base Styling */
+body.dark-mode {
+  background: url('https://nickpunt.com/content/images/2020/03/file.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #f7fafc;
+}
+
+body.dark-mode::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
 }
 
 /* Top-right bar */
@@ -23,7 +38,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: #ffffff;
+  background-color: #2888e2;
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
@@ -37,15 +52,16 @@ body {
 }
 
 body.dark-mode .top-bar {
-  background-color: #2d3748;
+  background-color: #1f2937;
 }
 
 body.dark-mode .top-bar button {
-  background-color: #4a5568;
-  color: #f7fafc;
+  background-color: #374151;
+  color: #e2e8f0;
+  border: 1px solid #4a5568;
 }
 
-/* App container padding to prevent overlap */
+/* App container */
 .app-container {
   max-width: 700px;
   margin: 0 auto;
@@ -111,6 +127,12 @@ body.dark-mode .top-bar button {
   background-color: #cbd5e1;
 }
 
+body.dark-mode .history-btn {
+  background-color: #374151;
+  color: #f7fafc;
+  border: 1px solid #4a5568;
+}
+
 /* Weather result + summary */
 .result-summary {
   display: flex;
@@ -121,7 +143,8 @@ body.dark-mode .top-bar button {
 }
 
 .weather-card-output {
-  background-color: #eed14e;
+  
+  background: white;
   border-radius: 12px;
   padding: 16px;
   flex: 1 1 250px;
@@ -137,13 +160,8 @@ body.dark-mode .top-bar button {
 }
 
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
 .weather-card-output .datetime {
@@ -155,8 +173,8 @@ body.dark-mode .top-bar button {
 
 .summary-box {
   flex: 1 1 250px;
-  background: linear-gradient(to right, #007cf0, #00dfd8);
-  color: white;
+  background: url('https://nordicapis.com/wp-content/uploads/6-Best-Free-and-Paid-Weather-APIs-1024x576.png') no-repeat center center ;
+  color: rgb(14, 13, 13);
   padding: 20px;
   border-radius: 12px;
   font-size: 16px;
@@ -176,11 +194,21 @@ body.dark-mode .top-bar button {
   line-height: 1.4;
 }
 
+body.dark-mode .summary-box {
+  background: url('https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2016/05/weather-wallpaper.jpg') no-repeat center center ;
+  color: #f7fafc;
+  border: 1px solid #4a5568;
+}
+
+body.dark-mode .summary-box h4,
+body.dark-mode .summary-box p {
+  color: #e2e8f0;
+}
+
 /* Forecast styling */
 .forecast-grid {
   margin-top: 20px;
   display: grid;
-  align-items: center;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   gap: 10px;
 }
@@ -189,7 +217,7 @@ body.dark-mode .top-bar button {
   background: #ffffff;
   padding: 12px;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   text-align: center;
   transition: transform 0.2s ease;
 }
@@ -198,24 +226,19 @@ body.dark-mode .top-bar button {
   transform: scale(1.05);
 }
 
-.dark-mode .forecast-card {
+body.dark-mode .forecast-card {
   background-color: #2d3748;
   color: #f7fafc;
 }
 
-/* Dark mode styles */
-body.dark-mode {
-  background-color: #1a202c;
-  color: #f7fafc;
-}
-
+/* Dark Mode Card Styling */
 body.dark-mode .weather-card,
-body.dark-mode .weather-card-output,
-body.dark-mode .summary-box {
+body.dark-mode .weather-card-output {
   background-color: #2d3748;
   color: #f7fafc;
 }
 
+/* Dark Mode Input and Button */
 body.dark-mode input,
 body.dark-mode button {
   background-color: #4a5568;
@@ -230,7 +253,7 @@ body.dark-mode button {
   }
 }
 
-/* From Uiverse.io by rishichawda */
+/* From Universe.io by rishichawda */
 /* The switch - the box around the slider */
 #theme-toggle-button {
   font-size: 8px;

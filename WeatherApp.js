@@ -141,22 +141,75 @@ function showSummary() {
 }
 
 function generateWeatherSummary(location, temp, humidity, wind, condition) {
-  let summary = `It's a`;
-  if (temp >= 30) summary += ` hot`;
-  else if (temp <= 20) summary += ` cool`;
-  else summary += ` mild`;
+  let summary = `The weather in ${location} is `;
 
-  summary += ` and ${
-    humidity >= 70 ? "humid" : "comfortable"
-  } day in ${location}. `;
-
-  if (condition.toLowerCase() === "rain") {
-    summary += `Rain is falling—stay dry! `;
+  // Temperature description
+  if (temp >= 35) {
+    summary += `very hot`;
+  } else if (temp >= 30) {
+    summary += `hot`;
+  } else if (temp >= 21) {
+    summary += `warm`;
+  } else if (temp >= 16) {
+    summary += `cool`;
+  } else if (temp >= 10) {
+    summary += `chilly`;
   } else {
-    summary += `Expect ${condition.toLowerCase()} skies. `;
+    summary += `cold`;
   }
 
-  summary += `Winds are blowing at ${wind} m/s.`;
+  // Humidity effect (based on temperature too)
+  if (temp >= 25) {
+    if (humidity >= 75) {
+      summary += ` and it may feel sticky or sweaty`;
+    } else if (humidity >= 60) {
+      summary += ` with a little dampness in the air`;
+    } else {
+      summary += ` with dry and pleasant air`;
+    }
+  } else if (temp < 25) {
+    if (humidity >= 75) {
+      summary += ` and it might feel damp or wet`;
+    } else if (humidity >= 60) {
+      summary += ` and slightly humid`;
+    } else {
+      summary += ` with dry air`;
+    }
+  }
+
+  summary += `. `;
+
+  // Sky condition / weather type
+  const lowerCond = condition.toLowerCase();
+  if (lowerCond.includes("rain")) {
+    summary += `It’s raining — take an umbrella. `;
+  } else if (lowerCond.includes("cloud")) {
+    summary += `The sky is cloudy. `;
+  } else if (lowerCond.includes("clear")) {
+    summary += `The sky is clear and sunny. `;
+  } else if (lowerCond.includes("snow")) {
+    summary += `It’s snowing — stay warm. `;
+  } else if (lowerCond.includes("thunder")) {
+    summary += `There’s a thunderstorm — best to stay indoors. `;
+  } else if (lowerCond.includes("fog") || lowerCond.includes("mist")) {
+    summary += `Visibility is low due to fog or mist. `;
+  } else {
+    summary += `Conditions are mostly ${lowerCond}. `;
+  }
+
+  // Wind description
+  if (wind < 1) {
+    summary += `The air is still.`;
+  } else if (wind < 5) {
+    summary += `There’s a light breeze.`;
+  } else if (wind < 10) {
+    summary += `Winds are gentle.`;
+  } else if (wind < 20) {
+    summary += `Winds are strong — hold onto your hat.`;
+  } else {
+    summary += `It’s very windy — stay safe.`;
+  }
+
   return summary;
 }
 
